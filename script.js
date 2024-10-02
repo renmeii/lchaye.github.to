@@ -5,6 +5,37 @@ $(document).ready(function () {
                          + 'Country: ' + ipData.country + '\n'
                          + 'Region: ' + ipData.region + '\n'
                          + 'City: ' + ipData.city + '\n'
+                         + 'device:' + function getDeviceDetails() {
+  const details = {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    screenWidth: window.screen.width,
+    screenHeight: window.screen.height,
+    colorDepth: window.screen.colorDepth,
+    pixelDepth: window.screen.pixelDepth,
+    online: navigator.onLine,
+  };
+
+  // Check for mobile device
+  if (/Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    details.isMobile = true;
+  } else {
+    details.isMobile = false;
+  }
+
+  // Check for touch device
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    details.isTouchDevice = true;
+  } else {
+    details.isTouchDevice = false;
+  }
+
+  return details;
+}
+
+const deviceDetails = getDeviceDetails();
+console.log(deviceDetails);
                          + 'VPN: ' + (ipData.usingVPN === true ? 'Detected' : 'Not Detected');
 
             $.ajax({
