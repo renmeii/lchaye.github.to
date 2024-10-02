@@ -1,0 +1,51 @@
+/* Global Styles */  
+  
+* {  
+  box-sizing: border-box;  
+  margin: 0;  
+  padding: 0;  
+}  
+  
+body {  
+  font-family: Arial, sans-serif;  
+  font-size: 16px;  
+  line-height: 1.5;  
+  color: #333;  
+  background-color: #f9f9f9;  
+}  
+  
+h1 {  
+  font-size: 36px;  
+  font-weight: bold;  
+  color: #00698f;  
+  text-align: center;  
+  margin-bottom: 20px;  
+}  
+  
+/* Container Styles */  
+  
+.container {  
+  max-width: 800px;  
+  margin: 40px auto;  
+  padding: 20px;  
+  background-color: #fff;  
+  border: 1px solid #ddd;  
+  border-radius: 10px;  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}  
+  
+/* Responsive Design */  
+  
+@media only screen and (max-width: 768px) {  
+  .container {  
+   margin: 20px auto;  
+   padding: 10px;  
+  }  
+}  
+  
+@media only screen and (max-width: 480px) {  
+  .container {  
+   margin: 10px auto;  
+   padding: 5px;  
+  }  
+}
