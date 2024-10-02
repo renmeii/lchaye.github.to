@@ -1,384 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Boze - A modern utility mod for newer Minecraft versions. Features include support for 1.20.4/6, legacy support for 1.18.2-1.20.1, Fabric, Sodium, Baritone, and more. Perfect for ghost and anarchy hacking with a 'Ghost Mode' toggle.">
-<meta name="keywords" content="Boze, Minecraft, Minecraft mod, utility mod, 1.20.4, 1.18.2, Fabric, Sodium, Baritone, ghost hacking, anarchy hacking, Ghost Mode, Minecraft hacks">
-<meta name="author" content="Boze Team">
-<meta property="og:title" content="Boze - Home">
-<meta property="og:description" content="Boze - A modern utility mod for newer Minecraft versions. Supports multiple versions and comes with Fabric, Sodium, and Baritone. Ideal for ghost and anarchy hacking.">
-<meta property="og:image" content="https://boze.dev/assets/img/logo.svg">
-<meta property="og:url" content="https://boze.dev">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Boze - Home">
-<meta name="twitter:description" content="Boze - A modern utility mod for newer Minecraft versions. Features include support for 1.20.4/6, legacy support for 1.18.2-1.20.1, Fabric, Sodium, Baritone, and more. Perfect for ghost and anarchy hacking with a 'Ghost Mode' toggle.">
-<meta name="twitter:image" content="https://boze.dev/assets/img/logo.svg">
-<title>Boze - Home</title>
-<link rel="icon" type="image/svg+xml" sizes="85x150" href="https://boze.dev/assets/img/logo.svg">
-<link rel="preload" as="style" href="https://boze.dev/build/assets/app-UlSniMdC.css"><link rel="stylesheet" href="css/assets-app-UlSniMdC.css"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                                                
+                                                <!-- this script is provided by https://www.htmlbestcodes.com coded by: Kerixa Inc. -->
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
-        body { font-family: 'Lexend', sans-serif; }
-    </style>
-</head>
-<body class="bg-neutral-900">
-<div id="navbar-container" class="hidden">
-<nav class="bg-indigo-600">
-<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-<div class="relative flex h-16 items-center justify-between">
+.containter {
+    width: 350px;
+    height: 200px;
+}
 
-<div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-<button type="button" id="mobile-menu-button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-indigo-700 hover:text-white" aria-expanded="false">
-<span class="sr-only">Open main menu</span>
+.dialogue {
+    border-color: #0059F0;
+    border-style: solid;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px;
+}
 
-<svg id="menu-open-icon" class="block h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-</svg>
+.top-panel {
+    background-color: #0059F0;
+    height: 25px;
+    border-radius: 15px 15px 0 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 5px 0px 0px 9px;
+}
 
-<svg id="menu-close-icon" class="hidden h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-</svg>
-</button>
-</div>
-
-<div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-
-<div class="flex flex-shrink-0 items-center">
-<a href="boze.html">
-<img class="h-8 w-auto" src="images/images-logo.svg" alt="Boze Logo">
-</a>
-</div>
-
-<div class="hidden sm:ml-6 sm:block">
-<div class="flex space-x-4">
-<a href="features.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Features</a>
-<a href="changelog.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Updates</a>
-<a href="pricing.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Pricing</a>
-<a href="discord.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Discord</a>
-<a href="login.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Login</a>
-</div>
-</div>
-</div>
-
-<div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-<div class="flex space-x-4">
-<a href="register.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Get Boze</a>
-</div>
-</div>
-</div>
-</div>
-
-<div id="mobile-menu" class="hidden sm:hidden">
-<div class="space-y-1 px-2 pb-3 pt-2">
-<a href="features.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Features</a>
-<a href="changelog.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Updates</a>
-<a href="pricing.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Pricing</a>
-<a href="discord.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Discord</a>
-<a href="login.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-700 hover:text-white">Login</a>
-</div>
-</div>
-</nav>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOpenIcon = document.getElementById('menu-open-icon');
-        const menuCloseIcon = document.getElementById('menu-close-icon');
-
-        mobileMenuButton.addEventListener('click', function () {
-            mobileMenu.classList.toggle('hidden');
-            menuOpenIcon.classList.toggle('hidden');
-            menuCloseIcon.classList.toggle('hidden');
-        });
-    });
-</script>
-</div>
-<div id="main-content" class="overflow-y-auto">
-
-<div class="absolute top-0 left-0 w-full h-full z-[-1]">
-<video id="background-video" class="w-full h-full object-cover blur-sm" autoplay muted loop playsinline>
-<source src="https://boze.dev/assets/video/hero-rev-4.mp4" type="video/mp4">
-</source></video>
-</div>
-<div id="welcome-section" style="display: block;">
-
-<section class="relative min-h-screen flex items-center justify-center pt-0">
-<div class="text-center text-white p-5 z-10 w-full">
-<h1 class="text-4xl font-bold mb-4">Boze Utility Mod</h1>
-<p class="mb-12">Release: v61 - Beta: 2.0-26</p>
-<a href="#" onclick="showHomeContent()" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded">
-Get Started
-</a>
-</div>
-</section>
-</div>
-<div id="home-content" style="display: none;">
-
-<div class="relative overflow-hidden py-24 z-10">
-<div class="mx-auto max-w-7xl px-6 lg:px-8">
-<div class="mx-auto max-w-2xl lg:mx-0">
-<h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Boze Utility Mod</h2>
-<p class="mt-6 text-lg leading-8 text-gray-300">A modern client with guaranteed support from the devs, designed for both ghost and anarchy gameplay. Supports Minecraft versions 1.18.2-1.21.1.</p>
-</div>
-<div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
-<div class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-<a href="#for-anarchy-section">For anarchy <span aria-hidden="true">&rarr;</span></a>
-<a href="#for-ghost-section">For ghost <span aria-hidden="true">&rarr;</span></a>
-<a href="#our-visuals-section">Our visuals <span aria-hidden="true">&rarr;</span></a>
-<a href="#faq-section">FAQ <span aria-hidden="true">&rarr;</span></a>
-</div>
-<dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-<div class="hidden sm:block flex-col-reverse">
-<dt class="text-base leading-7 text-gray-300">Features</dt>
-<dd class="text-2xl font-bold leading-9 tracking-tight text-white">230+</dd>
-</div>
-<div class="hidden sm:block flex-col-reverse">
-<dt class="text-base leading-7 text-gray-300">Launches</dt>
-<dd class="text-2xl font-bold leading-9 tracking-tight text-white">1'000'000+</dd>
-</div>
-<div class="hidden sm:block flex-col-reverse">
-<dt class="text-base leading-7 text-gray-300">Updates per year</dt>
-<dd class="text-2xl font-bold leading-9 tracking-tight text-white">8-12</dd>
-</div>
-<div class="hidden sm:block flex-col-reverse">
-<dt class="text-base leading-7 text-gray-300">Devices allowed</dt>
-<dd class="text-2xl font-bold leading-9 tracking-tight text-white">2</dd>
-</div>
-</dl>
-</div>
-</div>
-</div>
-<div id="for-anarchy-section" class="bg-neutral-900 py-24">
-<div class="mx-auto max-w-7xl px-6 lg:px-8">
-<div class="mx-auto max-w-2xl lg:text-center">
-<h2 class="text-base font-semibold leading-7 text-indigo-600">For anarchy</h2>
-<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Everything you need for 2b2t</p>
-<p class="mt-6 text-lg leading-8 text-gray-300">And other anarchy servers. We regularly test on 2b2t, crystalpvp, constantiam, oldf*g, 8b8t, 9b9t, and more.</p>
-</div>
-<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">local_fire_department</span>
-</div>
-PVP
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Top-tier AutoCrystal and Offhand, and many other modules such as AutoMine, PearlPhase, Surround, etc.</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">flight</span>
-</div>
-Travel
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Many fast travel modules, including ElytraFly modes Packet (430 km/h), Boost, and ReCast for 2b2t.</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">construction</span>
-</div>
-Utility
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Countless utility modules, including a Diamond to Netherrite armor upgrader, so you can use your 1.12 kits like they're new.</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">auto_awesome</span>
-</div>
-Automation
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Baritone integration, so you can AFK Elytra Fly on highways, auto-avoiding obstacles.</dd>
-</div>
-</dl>
-</div>
-</div>
-</div>
-<div id="for-ghost-section" class="bg-neutral-900 py-24">
-<div class="mx-auto max-w-7xl px-6 lg:px-8">
-<div class="mx-auto max-w-2xl lg:text-center">
-<h2 class="text-base font-semibold leading-7 text-indigo-600">For ghost</h2>
-<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Undetectable</p>
-<p class="mt-6 text-lg leading-8 text-gray-300">Never get banned. Our ghost features are made in a way so they bypass every anti-cheat, as they don't do anything impossible in Vanilla.</p>
-</div>
-<div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">emoji_events</span>
-</div>
-Competitive
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Our Aura lets you dominate in competitive games, even against pro players</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">cruelty_free</span>
-</div>
-Casual
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">We have less OP features like Trigger and AimAsist, if you just want a slight advantage</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">tune</span>
-</div>
-Customizable
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">You can extensively customize each aspect of all the features: clicking, rotations, item swapping, targeting, etc.</dd>
-</div>
-<div class="relative pl-16">
-<dt class="text-base font-semibold leading-7 text-white">
-<div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
-<span class="material-icons text-white text-2xl">fingerprint</span>
-</div>
-Fingerprint-free
-</dt>
-<dd class="mt-2 text-base leading-7 text-gray-300">Each packet is ensured to be "fingerprint-free", meaning it would be possible for a highly skilled player to do the same without a client</dd>
-</div>
-</dl>
-</div>
-</div>
-</div>
-<div id="our-visuals-section" class="bg-neutral-900 py-24">
-<div class="mx-auto max-w-7xl px-6 lg:px-8">
-<div class="mx-auto max-w-2xl sm:text-center">
-<h2 class="text-base font-semibold leading-7 text-indigo-600">Our visuals</h2>
-<p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Gradients, Shaders, and more</p>
-<p class="mt-6 text-lg leading-8 text-gray-300">Why should cool visuals just be for ESP? All of our visuals support gradients and shaders, and are optimized for high FPS on any pc.</p>
-</div>
-</div>
-<div class="mx-auto mt-16 max-w-7xl px-6 lg:px-8 relative">
-
-<div class="carousel relative overflow-hidden shadow-2xl">
-
-<div class="carousel-images flex transition-transform duration-500">
-<img src="images/carousel-esp.jpg" alt="ESP screenshot" class="w-full h-auto">
-<img src="images/carousel-highlightone.jpg" alt="BlockHighlight screenshot 1" class="w-full h-auto">
-<img src="images/carousel-highlighttwo.jpg" alt="BlockHighlight screenshot 2" class="w-full h-auto">
-<img src="images/carousel-chams.jpg" alt="Chams screenshot" class="w-full h-auto">
-</div>
-
-<div class="absolute inset-0 pointer-events-none">
-<div class="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-neutral-900"></div>
-<div class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-t from-neutral-900"></div>
-<div class="absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-neutral-900"></div>
-<div class="absolute inset-y-0 right-0 w-2 bg-gradient-to-l from-neutral-900"></div>
-</div>
-</div>
-
-<div class="absolute inset-0 flex justify-between items-center px-4">
-<button id="prev" class="text-white text-3xl">&lsaquo;</button>
-<button id="next" class="text-white text-3xl">&rsaquo;</button>
-</div>
-</div>
-
-<script>
-                    const images = document.querySelector('.carousel-images');
-                    const prev = document.getElementById('prev');
-                    const next = document.getElementById('next');
-                    let index = 0;
-                    const totalImages = 4; // Update based on the number of images
-                    const intervalTime = 5000; // 5 seconds
-
-                    // Function to update image position
-                    const updateImagePosition = () => {
-                        images.style.transform = `translateX(-${index * 100}%)`;
-                    };
-
-                    // Next image logic
-                    const nextImage = () => {
-                        index = (index < totalImages - 1) ? index + 1 : 0;
-                        updateImagePosition();
-                    };
-
-                    // Previous image logic
-                    const prevImage = () => {
-                        index = (index > 0) ? index - 1 : totalImages - 1;
-                        updateImagePosition();
-                    };
-
-                    // Event listeners for manual control
-                    prev.addEventListener('click', () => {
-                        prevImage();
-                        resetAutoCycle();
-                    });
-
-                    next.addEventListener('click', () => {
-                        nextImage();
-                        resetAutoCycle();
-                    });
-
-                    // Auto cycle function
-                    let autoCycle = setInterval(nextImage, intervalTime);
-
-                    // Reset the automatic cycle when manually navigating
-                    const resetAutoCycle = () => {
-                        clearInterval(autoCycle);
-                        autoCycle = setInterval(nextImage, intervalTime);
-                    };
-                </script>
-</div>
-<div id="faq-section" class="bg-neutral-900">
-<div class="mx-auto max-w-7xl px-6 py-12 sm:py-32 lg:px-8 lg:py-40">
-<div class="mx-auto max-w-4xl divide-y divide-white/10">
-<h2 class="text-2xl font-bold leading-10 tracking-tight text-white">Frequently asked questions</h2>
-<dl class="mt-10 space-y-6 divide-y divide-white/10">
-
-<div class="pt-6">
-<dt>
-<button type="button" class="flex w-full items-start justify-between text-left text-white" aria-controls="faq-0" aria-expanded="false">
-<span class="text-base font-semibold leading-7">Can I run Fabric mods with Boze?</span>
-<span class="ml-6 flex h-7 items-center">
-<svg class="h-6 w-6 expand-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
-</svg>
-<svg class="hidden h-6 w-6 collapse-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
-</svg>
-</span>
-</button>
-</dt>
-<dd class="mt-2 pr-12 hidden" id="faq-0">
-<p class="text-base leading-7 text-gray-300">Absolutely! Boze comes with Fabric, and is compatible with most fabric mods. Many of our users use Boze together with Future, Rusher, and Meteor.</p>
-</dd>
-</div>
-
-<div class="pt-6">
-<dt>
-<button type="button" class="flex w-full items-start justify-between text-left text-white" aria-controls="faq-1" aria-expanded="false">
-<span class="text-base font-semibold leading-7">Do I need technical knowledge to setup Boze?</span>
-<span class="ml-6 flex h-7 items-center">
-<svg class="h-6 w-6 expand-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
-</svg>
-<svg class="hidden h-6 w-6 collapse-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6"></path>
-</svg>
-</span>
-</button>
-</dt>
-<dd class="mt-2 pr-12 hidden" id="faq-1">
-<p class="text-base leading-7 text-gray-300">No, you can install Boze in one click, and there's plenty of starter configs for both anarchy and ghost. If you need any help at all, you can ask the developers any questions you want.</p>
-</dd>
-</div>
-
-<div class="pt-6">
-<dt>
-<button type="button" class="flex w-full items-start justify-between text-left text-white" aria-controls="faq-2" aria-expanded="false">
-<span class="text-base font-semibold leading-7">What servers can I use Boze on?</span>
-<span class="ml-6 flex h-7 items-center">
-<svg class="h-6 w-6 expand-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
-</svg>
-<svg class="hidden h-6 w-6 collapse-icon" fill="none" viewbox="0 0 24 24" stroke-width="1.
+button {
+    float: right;
+    background-color: #DE5227;
+    margin-right: 10px;
+    color: white;
+    border-radius: 15%;
+    font-size: 15px;
+}
+</style>
+<div class="containter">
+      <div class="top-panel">
+        <strong>Text box</strong>
+        <button><strong>X</strong></button>
+      </div>
+      <div class="dialogue">
+        <p class="text">Some message here</p>
+      </div>
+</div><a target='_blank' href='https://www.htmlbestcodes.com' style='font-size: 8pt; text-decoration: none'>Html Best Codes</a>                                                
+                                            
