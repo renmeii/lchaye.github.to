@@ -12,6 +12,7 @@ body {
   line-height: 1.5;  
   color: #333;  
   background-color: #f9f9f9;  
+  background-image: linear-gradient(to bottom, #ff69b4, #ff99cc);  
 }  
   
 header {  
@@ -19,6 +20,7 @@ header {
   color: #fff;  
   padding: 20px;  
   text-align: center;  
+  border-bottom: 1px solid #ddd;  
 }  
   
 nav ul {  
@@ -36,6 +38,11 @@ nav li {
 nav a {  
   color: #fff;  
   text-decoration: none;  
+  transition: color 0.3s ease-in-out;  
+}  
+  
+nav a:hover {  
+  color: #ccc;  
 }  
   
 main {  
@@ -51,6 +58,12 @@ section {
   border: 1px solid #ddd;  
   border-radius: 10px;  
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+  transform: scale(1);  
+  transition: transform 0.3s ease-in-out;  
+}  
+  
+section:hover {  
+  transform: scale(1.1);  
 }  
   
 h1 {  
@@ -59,6 +72,7 @@ h1 {
   color: #00698f;  
   text-align: center;  
   margin-bottom: 20px;  
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  
 }  
   
 footer {  
@@ -67,4 +81,5 @@ footer {
   padding: 20px;  
   text-align: center;  
   clear: both;  
+  border-top: 1px solid #ddd;  
 }
