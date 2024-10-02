@@ -12,6 +12,7 @@ body {
   line-height: 1.5;  
   color: #333;  
   background-color: #f9f9f9;  
+  background-image: linear-gradient(to bottom, #ff69b4, #ff99cc);  
 }  
   
 h1 {  
@@ -20,6 +21,7 @@ h1 {
   color: #00698f;  
   text-align: center;  
   margin-bottom: 20px;  
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  
 }  
   
 /* Container Styles */  
@@ -32,6 +34,7 @@ h1 {
   border: 1px solid #ddd;  
   border-radius: 10px;  
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+  background-image: linear-gradient(to bottom, #ff69b4, #ff99cc);  
 }  
   
 /* Responsive Design */  
