@@ -1,31 +1,95 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>WhiteSpace</title>  
-  <link rel="stylesheet" type="text/css" href="styles.css">  
-</head>  
-<body>  
-  <header>  
-   <nav>  
-    <ul>  
-      <li><a href="#">Home</a></li>  
-      <li><a href="#">About</a></li>  
-      <li><a href="#">Contact</a></li>  
-    </ul>  
-   </nav>  
-  </header>  
-  <main>  
-   <section>  
-    <h1>Welcome to WhiteSpace</h1>  
-    <p>sarah planet</p>  
-   </section>  
-  </main>  
-  <footer>  
-   <p>&copy;  WhiteSpace</p>  
-  </footer>  
-  <script src="script.js"></script>  
-</body>  
-</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhiteSpace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'courier': ['"Courier Prime"', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-black text-white font-courier">
+  <div class="min-h-screen flex flex-col">
+    <header class="py-4">
+      <nav class="container mx-auto px-4">
+        <ul class="flex justify-center space-x-8 text-sm">
+          <li><a href="#" class="hover:text-gray-400 transition duration-300">HOME</a></li>
+          <li><a href="#" class="hover:text-gray-400 transition duration-300">ABOUT</a></li>
+          <li><a href="#" class="hover:text-gray-400 transition duration-300">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
 
+    <main class="flex-grow container mx-auto px-4 py-16 flex items-center justify-center">
+      <section class="text-center">
+        <h1 class="text-6xl font-bold mb-6 glitch" data-text="WhiteSpace">WhiteSpace</h1>
+        <p class="text-xl mb-8">Welcome to the void</p>
+        <div class="space-y-4">
+          <p class="text-sm">Explore the emptiness</p>
+          <p class="text-sm">Embrace the silence</p>
+          <p class="text-sm">Face your fears</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4">
+      <p class="text-center text-xs">&copy; 2023 WhiteSpace | Enter at your own risk</p>
+    </footer>
+  </div>
+
+  <style>
+    .glitch {
+      position: relative;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00c1;
+      clip: rect(24px, 550px, 90px, 0);
+      animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 #00fff9;
+      clip: rect(85px, 550px, 140px, 0);
+      animation: glitch-anim 2.5s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { clip: rect(17px, 9999px, 94px, 0); }
+      20% { clip: rect(63px, 9999px, 44px, 0); }
+      40% { clip: rect(145px, 9999px, 9px, 0); }
+      60% { clip: rect(67px, 9999px, 115px, 0); }
+      80% { clip: rect(39px, 9999px, 52px, 0); }
+      100% { clip: rect(11px, 9999px, 146px, 0); }
+    }
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(69px, 9999px, 56px, 0); }
+      20% { clip: rect(11px, 9999px, 146px, 0); }
+      40% { clip: rect(30px, 9999px, 131px, 0); }
+      60% { clip: rect(124px, 9999px, 2px, 0); }
+      80% { clip: rect(97px, 9999px, 18px, 0); }
+      100% { clip: rect(46px, 9999px, 82px, 0); }
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>
