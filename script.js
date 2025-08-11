@@ -49,6 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
     star.style.animationDuration = `${Math.random() * 3 + 2}s`;
     starsContainer.appendChild(star);
   }
+
+  // Custom cursor
+  const cursor = document.createElement('div');
+  cursor.classList.add('custom-cursor');
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Remove cursor style changes on mousedown/mouseup
+  document.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+  });
+
+  document.addEventListener('mouseup', (e) => {
+    e.preventDefault();
+  });
+
+  // Prevent default cursor on all elements
+  document.body.style.cursor = 'none';
+  const allElements = document.getElementsByTagName('*');
+  for (let i = 0; i < allElements.length; i++) {
+    allElements[i].style.cursor = 'none';
+  }
 });
 
 // Add these styles to your HTML file or a separate CSS file
@@ -114,21 +140,3 @@ const styles = `
 const styleElement = document.createElement('style');
 styleElement.textContent = styles;
 document.head.appendChild(styleElement);
-
-// Custom cursor
-const cursor = document.createElement('div');
-cursor.classList.add('custom-cursor');
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('mousedown', () => {
-  cursor.style.transform = 'scale(0.8)';
-});
-
-document.addEventListener('mouseup', () => {
-  cursor.style.transform = 'scale(1)';
-});
