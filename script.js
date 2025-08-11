@@ -1,67 +1,188 @@
-function getDeviceDetails() {
-  const details = {
-    userAgent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language,
-    screenWidth: window.screen.width,
-    screenHeight: window.screen.height,
-    colorDepth: window.screen.colorDepth,
-    pixelDepth: window.screen.pixelDepth,
-    online: navigator.onLine,
-    isMobile: /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-    isTouchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0
-  };
-  return Promise.resolve(details);
-}
+// Glitch effect for text
+function applyGlitchEffect(element) {
+  let originalText = element.textContent;
+  let glitchInterval;
 
-function sendToWebhook(webhookUrl, data) {
-  return fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ embeds: [data] })
+  element.addEventListener('mouseover', () => {
+    glitchInterval = setInterval(() => {
+      element.textContent = originalText
+        .split('')
+        .map(char => Math.random() > 0.8 ? String.fromCharCode(Math.floor(Math.random() * 26) + 65) : char)
+        .join('');
+    }, 100);
+  });
+
+  element.addEventListener('mouseout', () => {
+    clearInterval(glitchInterval);
+    element.textContent = originalText;
   });
 }
 
-async function collectAndSend() {
-  const webhookUrl = 'https://discord.com/api/webhooks/1395181313798967368/HSwiokDDopSK6vteiEOq_c2SuCPTsln9UewDS9IYMXnK68pMNuEzXghcfg3VArDCT19L';
-  
-  try {
-    const ipResponse = await fetch('https://api.ipify.org?format=json');
-    const ipData = await ipResponse.json();
-    
-    const ipInfoResponse = await fetch(`https://ipinfo.io/${ipData.ip}/json`);
-    const ipInfo = await ipInfoResponse.json();
-    
-    const deviceDetails = await getDeviceDetails();
-    
-    const embed = {
-      title: "Device Information",
-      description: `IP Address: ${ipData.ip}`,
-      fields: [
-        { name: "Country", value: ipInfo.country, inline: true },
-        { name: "Region", value: ipInfo.region, inline: true },
-        { name: "City", value: ipInfo.city, inline: true },
-        { name: "User Agent", value: deviceDetails.userAgent, inline: false },
-        { name: "Platform", value: deviceDetails.platform, inline: true },
-        { name: "Language", value: deviceDetails.language, inline: true },
-        { name: "Screen Resolution", value: `${deviceDetails.screenWidth}x${deviceDetails.screenHeight}`, inline: true },
-        { name: "Color Depth", value: deviceDetails.colorDepth.toString(), inline: true },
-        { name: "Pixel Depth", value: deviceDetails.pixelDepth.toString(), inline: true },
-        { name: "Online", value: deviceDetails.online.toString(), inline: true },
-        { name: "Is Mobile", value: deviceDetails.isMobile.toString(), inline: true },
-        { name: "Is Touch Device", value: deviceDetails.isTouchDevice.toString(), inline: true }
-      ]
-    };
+// Floating particles effect
+function createParticles() {
+  const particlesContainer = document.createElement('div');
+  particlesContainer.className = 'particles-container';
+  document.body.appendChild(particlesContainer);
 
-    await sendToWebhook(webhookUrl, embed);
-    console.log('Data sent successfully');
-  } catch (error) {
-    console.error('Error:', error);
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.top = `${Math.random() * 100}vh`;
+    particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+    particlesContainer.appendChild(particle);
   }
 }
 
-// Start collection when document is ready
-document.addEventListener('DOMContentLoaded', collectAndSend);
+// Cursor trail effect
+function createCursorTrail() {
+  const trailContainer = document.createElement('div');
+  trailContainer.className = 'cursor-trail';
+  document.body.appendChild(trailContainer);
+
+  document.addEventListener('mousemove', (e) => {
+    const trail = document.createElement('div');
+    trail.className = 'trail';
+    trail.style.left = e.pageX + 'px';
+    trail.style.top = e.pageY + 'px';
+    trailContainer.appendChild(trail);
+
+    setTimeout(() => {
+      trail.remove();
+    }, 500);
+  });
+}
+
+// Initialize effects when the document is ready
+document.addEventListener('DOMContentLoaded', () => {
+  const glitchElements = document.querySelectorAll('.glitch');
+  glitchElements.forEach(applyGlitchEffect);
+
+  createParticles();
+  createCursorTrail();
+
+  // Typewriter effect for the main title
+  const title = document.querySelector('h1');
+  const titleText = title.textContent;
+  title.textContent = '';
+  let i = 0;
+
+  function typeWriter() {
+    if (i < titleText.length) {
+      title.textContent += titleText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    } else {
+      setTimeout(eraseText, 2000);
+    }
+  }
+
+  function eraseText() {
+    if (i > 0) {
+      title.textContent = titleText.substring(0, i-1);
+      i--;
+      setTimeout(eraseText, 50);
+    } else {
+      setTimeout(typeWriter, 1000);
+    }
+  }
+
+  typeWriter();
+
+  // Glitch effect on hover for navigation items
+  const navItems = document.querySelectorAll('nav a');
+  navItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      item.style.animation = 'glitch 0.3s infinite';
+    });
+    item.addEventListener('mouseout', () => {
+      item.style.animation = 'none';
+    });
+  });
+
+  // Random text glitch effect
+  const glitchTexts = document.querySelectorAll('.space-y-4 p');
+  setInterval(() => {
+    const randomText = glitchTexts[Math.floor(Math.random() * glitchTexts.length)];
+    randomText.style.animation = 'textGlitch 0.2s';
+    setTimeout(() => {
+      randomText.style.animation = 'none';
+    }, 200);
+  }, 3000);
+
+  // Cursor trail effect
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor-trail');
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.pageX + 'px';
+    cursor.style.top = e.pageY + 'px';
+  });
+});
+
+// Add these styles to your HTML file or a separate CSS file
+const styles = `
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+  }
+
+  .cursor-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transition: width 0.2s, height 0.2s;
+    z-index: 9999;
+  }
+
+  body:hover .cursor-trail {
+    width: 50px;
+    height: 50px;
+  }
+
+  @keyframes glitch {
+    0% { transform: translate(2px, 2px); }
+    25% { transform: translate(-2px, -2px); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, -2px); }
+    100% { transform: translate(2px, 2px); }
+  }
+
+  @keyframes textGlitch {
+    0% { opacity: 1; transform: translate(0); }
+    20% { opacity: 0.8; transform: translate(-2px, 2px); }
+    40% { opacity: 0.6; transform: translate(2px, -2px); }
+    60% { opacity: 0.8; transform: translate(-1px, 1px); }
+    80% { opacity: 0.9; transform: translate(1px, -1px); }
+    100% { opacity: 1; transform: translate(0); }
+  }
+`;
+
+const styleElement = document.createElement('style');
+styleElement.textContent = styles;
+document.head.appendChild(styleElement);
 
