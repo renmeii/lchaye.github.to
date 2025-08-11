@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhiteSpace - Contact</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'courier': ['"Courier Prime"', 'monospace'],
-          },
-        }
-      }
-    }
-  </script>
+  
 </head>
 <body class="bg-black text-white font-courier">
   <div class="min-h-screen flex flex-col">
-    <header class="py-4">
-      <nav class="container mx-auto px-4">
-        <ul class="flex justify-center space-x-8 text-sm">
-          <li><a href="index.html" class="hover:text-gray-400 transition duration-300">HOME</a></li>
-          <li><a href="about.html" class="hover:text-gray-400 transition duration-300">ABOUT</a></li>
-          <li><a href="contact.html" class="hover:text-gray-400 transition duration-300">CONTACT</a></li>
-          <li><a href="chess.html" class="hover:text-gray-400 transition duration-300">CHESS</a></li>
-        </ul>
-      </nav>
-    </header>
+    
 
     <main class="flex-grow container mx-auto px-4 py-16 flex items-center justify-center">
       <section class="text-center">
         <h1 class="text-4xl font-bold mb-6 glitch" data-text="Contact">Contact</h1>
         <p class="text-xl mb-8 glitch-text">Reach out into the void</p>
-        <form class="space-y-4">
-          <input type="text" placeholder="Your name" class="w-full p-2 bg-gray-900 border border-gray-700">
-          <input type="email" placeholder="Your email" class="w-full p-2 bg-gray-900 border border-gray-700">
-          <textarea placeholder="Your message" class="w-full p-2 bg-gray-900 border border-gray-700 h-32"></textarea>
+        <form id="contact-form" class="space-y-4">
+          <input type="text" name="name" placeholder="Your name" class="w-full p-2 bg-gray-900 border border-gray-700" required>
+          <input type="email" name="email" placeholder="Your email" class="w-full p-2 bg-gray-900 border border-gray-700" required>
+          <textarea name="message" placeholder="Your message" class="w-full p-2 bg-gray-900 border border-gray-700 h-32" required></textarea>
           <button type="submit" class="w-full p-2 bg-white text-black hover:bg-gray-300 transition duration-300">Send</button>
         </form>
       </section>
     </main>
 
-    <footer class="py-4">
-      <p class="text-center text-xs">&copy; 2023 WhiteSpace | Enter at your own risk</p>
-    </footer>
+
   </div>
 
   <script src="script.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const webhookURL = 'https://discord.com/api/webhooks/1395181313798967368/HSwiokDDopSK6vteiEOq_c2SuCPTsln9UewDS9IYMXnK68pMNuEzXghcfg3VArDCT19L';
+      const name = this.elements.name.value;
+      const email = this.elements.email.value;
+      const message = this.elements.message.value;
+
+      const data = {
+        content: `New message from WhiteSpace contact form:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+      };
+
+      fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Message sent successfully!');
+          this.reset();
+        } else {
+          alert('There was an error sending your message. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+      });
+    });
+  </script>
 </body>
 </html>
