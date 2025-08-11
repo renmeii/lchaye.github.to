@@ -1,67 +1,156 @@
-function getDeviceDetails() {
-  const details = {
-    userAgent: navigator.userAgent,
-    platform: navigator.platform,
-    language: navigator.language,
-    screenWidth: window.screen.width,
-    screenHeight: window.screen.height,
-    colorDepth: window.screen.colorDepth,
-    pixelDepth: window.screen.pixelDepth,
-    online: navigator.onLine,
-    isMobile: /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-    isTouchDevice: 'ontouchstart' in window || navigator.maxTouchPoints > 0
-  };
-  return Promise.resolve(details);
+// Utilities
+const root = document.documentElement;
+const $ = (sel, parent = document) => parent.querySelector(sel);
+const $$ = (sel, parent = document) => Array.from(parent.querySelectorAll(sel));
+
+// Theme toggle with persistence
+const THEME_KEY = 'ws_theme';
+function getPreferredTheme() {
+  const stored = localStorage.getItem(THEME_KEY);
+  if (stored === 'light' || stored === 'dark') return stored;
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+function applyTheme(theme) {
+  root.setAttribute('data-theme', theme);
+}
+function toggleTheme() {
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  localStorage.setItem(THEME_KEY, next);
 }
 
-function sendToWebhook(webhookUrl, data) {
-  return fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ embeds: [data] })
+// Mobile navigation
+function setupMobileNav() {
+  const toggleBtn = document.querySelector('[data-nav-toggle]');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (!toggleBtn || !mobileNav) return;
+
+  function closeMobile() {
+    mobileNav.hidden = true;
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+  function openMobile() {
+    mobileNav.hidden = false;
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    expanded ? closeMobile() : openMobile();
+  });
+
+  // Close on link click
+  $$('[data-close-mobile]', mobileNav).forEach((link) => link.addEventListener('click', closeMobile));
+
+  // Close on escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobile();
   });
 }
 
-async function collectAndSend() {
-  const webhookUrl = 'https://discord.com/api/webhooks/1395181313798967368/HSwiokDDopSK6vteiEOq_c2SuCPTsln9UewDS9IYMXnK68pMNuEzXghcfg3VArDCT19L';
-  
-  try {
-    const ipResponse = await fetch('https://api.ipify.org?format=json');
-    const ipData = await ipResponse.json();
-    
-    const ipInfoResponse = await fetch(`https://ipinfo.io/${ipData.ip}/json`);
-    const ipInfo = await ipInfoResponse.json();
-    
-    const deviceDetails = await getDeviceDetails();
-    
-    const embed = {
-      title: "Device Information",
-      description: `IP Address: ${ipData.ip}`,
-      fields: [
-        { name: "Country", value: ipInfo.country, inline: true },
-        { name: "Region", value: ipInfo.region, inline: true },
-        { name: "City", value: ipInfo.city, inline: true },
-        { name: "User Agent", value: deviceDetails.userAgent, inline: false },
-        { name: "Platform", value: deviceDetails.platform, inline: true },
-        { name: "Language", value: deviceDetails.language, inline: true },
-        { name: "Screen Resolution", value: `${deviceDetails.screenWidth}x${deviceDetails.screenHeight}`, inline: true },
-        { name: "Color Depth", value: deviceDetails.colorDepth.toString(), inline: true },
-        { name: "Pixel Depth", value: deviceDetails.pixelDepth.toString(), inline: true },
-        { name: "Online", value: deviceDetails.online.toString(), inline: true },
-        { name: "Is Mobile", value: deviceDetails.isMobile.toString(), inline: true },
-        { name: "Is Touch Device", value: deviceDetails.isTouchDevice.toString(), inline: true }
-      ]
-    };
-
-    await sendToWebhook(webhookUrl, embed);
-    console.log('Data sent successfully');
-  } catch (error) {
-    console.error('Error:', error);
-  }
+// Smooth scroll focus management
+function setupSmoothAnchors() {
+  $$('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', href);
+      // focus for a11y
+      if (target.tabIndex === -1) target.tabIndex = -1;
+      target.focus({ preventScroll: true });
+    });
+  });
 }
 
-// Start collection when document is ready
-document.addEventListener('DOMContentLoaded', collectAndSend);
+// Intersection Observer reveal animations
+function setupReveal() {
+  const elements = $$('.reveal');
+  if (!('IntersectionObserver' in window) || elements.length === 0) {
+    elements.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  elements.forEach((el) => observer.observe(el));
+}
+
+// Back to top button
+function setupToTop() {
+  const btn = document.querySelector('[data-to-top]');
+  if (!btn) return;
+  const onScroll = () => {
+    btn.hidden = window.scrollY < 300;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// Contact form validation + fake submit
+function setupContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = $('.form-status', form);
+
+  function setError(name, message) {
+    const el = $(`[data-error-for="${name}"]`, form);
+    if (el) el.textContent = message || '';
+  }
+
+  function validate() {
+    let valid = true;
+    const name = $('#name', form);
+    const email = $('#email', form);
+    const message = $('#message', form);
+
+    setError('name', ''); setError('email', ''); setError('message', '');
+
+    if (!name.value.trim()) { setError('name', 'Please enter your name.'); valid = false; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { setError('email', 'Enter a valid email.'); valid = false; }
+    if (!message.value.trim()) { setError('message', 'Please include a message.'); valid = false; }
+    return valid;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    if (!validate()) return;
+
+    // Fake async submit
+    status.textContent = 'Sending…';
+    await new Promise((r) => setTimeout(r, 900));
+    status.textContent = 'Thanks! We will get back to you shortly.';
+    form.reset();
+  });
+}
+
+// Footer year
+function setYear() {
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+  applyTheme(getPreferredTheme());
+  const themeBtn = document.querySelector('[data-theme-toggle]');
+  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+  setupMobileNav();
+  setupSmoothAnchors();
+  setupReveal();
+  setupToTop();
+  setupContactForm();
+  setYear();
+});
 

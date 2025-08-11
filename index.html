@@ -1,31 +1,263 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8">  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>WhiteSpace</title>  
-  <link rel="stylesheet" type="text/css" href="styles.css">  
-</head>  
-<body>  
-  <header>  
-   <nav>  
-    <ul>  
-      <li><a href="#">Home</a></li>  
-      <li><a href="#">About</a></li>  
-      <li><a href="#">Contact</a></li>  
-    </ul>  
-   </nav>  
-  </header>  
-  <main>  
-   <section>  
-    <h1>Welcome to WhiteSpace</h1>  
-    <p>sarah planet</p>  
-   </section>  
-  </main>  
-  <footer>  
-   <p>&copy;  WhiteSpace</p>  
-  </footer>  
-  <script src="script.js"></script>  
-</body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WhiteSpace</title>
+  <meta name="description" content="WhiteSpace — a modern, clean, and functional website layout." />
+  <meta name="theme-color" content="#0b0f19" />
+  <meta property="og:title" content="WhiteSpace" />
+  <meta property="og:description" content="A modern, clean, and functional website layout." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="#home" class="brand-link" aria-label="WhiteSpace home">WhiteSpace</a>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false" data-nav-toggle>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
+          <span class="theme-icon" aria-hidden="true">☾</span>
+        </button>
+      </nav>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <div class="mobile-nav-inner">
+        <ul>
+          <li><a href="#home" data-close-mobile>Home</a></li>
+          <li><a href="#about" data-close-mobile>About</a></li>
+          <li><a href="#features" data-close-mobile>Features</a></li>
+          <li><a href="#pricing" data-close-mobile>Pricing</a></li>
+          <li><a href="#blog" data-close-mobile>Blog</a></li>
+          <li><a href="#contact" data-close-mobile>Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="site-main">
+    <section class="section hero reveal" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">Welcome to WhiteSpace</h1>
+          <p class="hero-subtitle">sarah planet</p>
+          <div class="hero-ctas">
+            <a href="#features" class="btn btn-primary">Explore Features</a>
+            <a href="#contact" class="btn btn-ghost">Contact Us</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="gradient-orb"></div>
+          <div class="glass-card">
+            <div class="stat">
+              <span class="stat-value">99.9%</span>
+              <span class="stat-label">Uptime</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value"><span aria-hidden="true">⚡</span> Fast</span>
+              <span class="stat-label">Performance</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section reveal" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="section-title">Features</h2>
+        <p class="section-lead">Modern UI components and helpful utilities built in.</p>
+        <div class="grid cards-3">
+          <article class="card">
+            <h3>Responsive Layout</h3>
+            <p>Looks great on mobile, tablet, and desktop with an adaptive grid.</p>
+          </article>
+          <article class="card">
+            <h3>Dark Mode</h3>
+            <p>Eye-friendly theme with a persistent toggle and OS detection.</p>
+          </article>
+          <article class="card">
+            <h3>Accessible</h3>
+            <p>Semantic markup, skip links, and keyboard-friendly controls.</p>
+          </article>
+          <article class="card">
+            <h3>Smooth Scrolling</h3>
+            <p>Navigate sections with elegant in-page transitions.</p>
+          </article>
+          <article class="card">
+            <h3>Animations</h3>
+            <p>Subtle motion via Intersection Observer powered reveals.</p>
+          </article>
+          <article class="card">
+            <h3>Contact Form</h3>
+            <p>Client-side validation and a clean, simple UX.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title">About</h2>
+        <p class="prose">WhiteSpace is a streamlined, modern template you can customize. It uses clean design, clear typography, and a focus on usability.</p>
+      </div>
+    </section>
+
+    <section id="pricing" class="section reveal" aria-labelledby="pricing-title">
+      <div class="container">
+        <h2 id="pricing-title" class="section-title">Pricing</h2>
+        <div class="grid cards-3">
+          <article class="card card-featured">
+            <h3 class="plan">Starter</h3>
+            <p class="price">$0<span>/mo</span></p>
+            <ul class="features-list">
+              <li>Basic features</li>
+              <li>Community support</li>
+              <li>Good for trials</li>
+            </ul>
+            <button class="btn btn-primary">Get Started</button>
+          </article>
+          <article class="card">
+            <h3 class="plan">Pro</h3>
+            <p class="price">$12<span>/mo</span></p>
+            <ul class="features-list">
+              <li>Everything in Starter</li>
+              <li>Priority support</li>
+              <li>Advanced options</li>
+            </ul>
+            <button class="btn btn-outline">Choose Pro</button>
+          </article>
+          <article class="card">
+            <h3 class="plan">Business</h3>
+            <p class="price">$29<span>/mo</span></p>
+            <ul class="features-list">
+              <li>Team features</li>
+              <li>Custom integrations</li>
+              <li>Dedicated support</li>
+            </ul>
+            <button class="btn btn-outline">Talk to Sales</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section reveal" aria-labelledby="testimonials-title">
+      <div class="container">
+        <h2 id="testimonials-title" class="section-title">What people say</h2>
+        <div class="grid cards-3">
+          <blockquote class="card quote">
+            <p>“Clean, fast, and a joy to use.”</p>
+            <cite>— A. User</cite>
+          </blockquote>
+          <blockquote class="card quote">
+            <p>“Great baseline for modern sites.”</p>
+            <cite>— B. Builder</cite>
+          </blockquote>
+          <blockquote class="card quote">
+            <p>“Everything you need to get started.”</p>
+            <cite>— C. Creator</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section reveal" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section-title">FAQ</h2>
+        <div class="accordion" data-accordion>
+          <details>
+            <summary>Can I customize this?</summary>
+            <p>Yes, everything here is plain HTML, CSS, and JS. No build tools required.</p>
+          </details>
+          <details>
+            <summary>Does it support dark mode?</summary>
+            <p>Yes. It follows OS preference and can be toggled manually.</p>
+          </details>
+          <details>
+            <summary>Is there any tracking?</summary>
+            <p>No invasive tracking. Your privacy matters.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" class="section reveal" aria-labelledby="blog-title">
+      <div class="container">
+        <h2 id="blog-title" class="section-title">Latest posts</h2>
+        <div class="grid cards-3">
+          <article class="card post">
+            <h3><a href="#">Designing with space</a></h3>
+            <p>Why whitespace is your best friend for readability and focus.</p>
+          </article>
+          <article class="card post">
+            <h3><a href="#">A11y essentials</a></h3>
+            <p>Accessible patterns that make your site usable for everyone.</p>
+          </article>
+          <article class="card post">
+            <h3><a href="#">Performance tips</a></h3>
+            <p>Small tweaks that make a big difference in perceived speed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Contact</h2>
+        <form id="contact-form" class="form" novalidate>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+            <span class="error" data-error-for="name"></span>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+            <span class="error" data-error-for="email"></span>
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="error" data-error-for="message"></span>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <button class="to-top" aria-label="Back to top" hidden data-to-top>↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> WhiteSpace</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
 </html>
 
