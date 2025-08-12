@@ -1,111 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>WhiteSpace</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/alpine.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhiteSpace</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'courier': ['"Courier Prime"', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-    <header class="py-4 px-8">
-        <nav class="flex justify-between">
-            <ul class="flex space-x-4">
-                <li><a href="index.html" class="hover:text-gray-300">HOME</a></li>
-                <li><a href="about.html" class="hover:text-gray-300">ABOUT</a></li>
-                <li><a href="contact.html" class="hover:text-gray-300">CONTACT</a></li>
-                <li><a href="music.html" class="hover:text-gray-300">MUSIC</a></li>
-            </ul>
-            <div x-data="{ isToggled: false }">
-                <button x-on:click="isToggled = !isToggled" class="p-2 bg-white text-black rounded-lg shadow-lg">Toggle Background</button>
-                <div x-show="isToggled" class="absolute top-16 right-0 p-4">
-                    <div class="bg-white p-4 rounded-lg shadow-lg">
-                        <p class="text-sm">Choose a background:</p>
-                        <div class="flex space-x-2">
-                            <button x-on:click="document.body.classList.remove('bg-gradient-to-r'); document.body.classList.add('bg-gray-200')" class="p-2 bg-gray-200 text-black rounded-lg shadow-lg">Plain Room</button>
-                            <button x-on:click="document.body.classList.remove('bg-gray-200'); document.body.classList.add('bg-gradient-to-r')" class="p-2 bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-lg shadow-lg">Gradient</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+<body class="bg-black text-white font-courier">
+  <div class="min-h-screen flex flex-col galaxy-background">
+    <header class="py-4 bg-black shadow-lg hand-drawn">
+      <nav class="container mx-auto px-4">
+        <ul class="flex justify-center space-x-8 text-sm">
+          <li><a href="index.html" class="hover:text-red-500 transition duration-300">HOME</a></li>
+          <li><a href="about.html" class="hover:text-red-500 transition duration-300">ABOUT</a></li>
+          <li><a href="contact.html" class="hover:text-red-500 transition duration-300">CONTACT</a></li>
+          <li><a href="music.html" class="hover:text-red-500 transition duration-300">MUSIC</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <main class="flex-1 flex flex-col items-center justify-center px-8 py-16">
-        <section class="text-center animate-on-scroll">
-            <h1 class="text-4xl font-bold mb-6 glitch" data-text="Advanced WhiteSpace">Advanced WhiteSpace</h1>
-            <p class="text-xl mb-8 glitch-text">Welcome to the void</p>
-            <div class="space-y-4">
-                <p class="text-sm glitch-text">Explore the emptiness</p>
-                <p class="text-sm glitch-text">Embrace the silence</p>
-                <p class="text-sm glitch-text">Face your fears</p>
-            </div>
-            <div class="flex space-x-4">
-                <button class="p-2 bg-white text-black rounded-lg shadow-lg">Button 1</button>
-                <button class="p-2 bg-white text-black rounded-lg shadow-lg">Button 2</button>
-                <button class="p-2 bg-white text-black rounded-lg shadow-lg">Button 3</button>
-            </div>
-        </section>
-
-        <section class="mt-16">
-            <div class="grid grid-cols-3 gap-4">
-                <div class="p-4 bg-gray-200 rounded-lg shadow-lg">
-                    <p class="text-sm">Feature 1</p>
-                </div>
-                <div class="p-4 bg-gray-200 rounded-lg shadow-lg">
-                    <p class="text-sm">Feature 2</p>
-                </div>
-                <div class="p-4 bg-gray-200 rounded-lg shadow-lg">
-                    <p class="text-sm">Feature 3</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="mt-16">
-            <div class="flex space-x-4">
-                <div class="w-1/2">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="image1.jpg" alt="Image 1" class="w-full h-full object-cover object-center">
-                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                            <p class="text-sm text-white">Image Caption 1</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-1/2">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="image2.jpg" alt="Image 2" class="w-full h-full object-cover object-center">
-                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                            <p class="text-sm text-white">Image Caption 2</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <main class="flex-grow container mx-auto px-4 py-16 flex items-center justify-center">
+      <section class="text-center animate-on-scroll hand-drawn p-8 bg-black bg-opacity-80">
+        <h1 class="text-6xl font-bold mb-6 glitch" data-text="WhiteSpace">WhiteSpace</h1>
+        <p class="text-xl mb-8 glitch-text">Welcome to the void</p>
+        <div class="space-y-4">
+          <p class="text-sm glitch-text">Explore the emptiness</p>
+          <p class="text-sm glitch-text">Embrace the silence</p>
+          <p class="text-sm text-red-500">Face your fears</p>
+        </div>
+      </section>
     </main>
 
-    <footer class="py-4 px-8 text-center">
-        <p class="text-xs">&copy; Advanced WhiteSpace | Enter at your own risk</p>
+    <footer class="py-4 bg-black shadow-inner hand-drawn">
+      <p class="text-center text-xs text-red-500">&copy;  WhiteSpace | Enter at your own risk</p>
     </footer>
+  </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const glitchTexts = document.querySelectorAll(".glitch");
-
-            glitchTexts.forEach((text) => {
-                const textContent = text.textContent;
-                const letters = textContent.split("");
-                text.textContent = "";
-
-                letters.forEach((letter, index) => {
-                    const span = document.createElement("span");
-                    span.textContent = letter;
-                    text.appendChild(span);
-
-                    const randomDelay = Math.floor(Math.random() * 100) + 50;
-                    const randomDuration = Math.floor(Math.random() * 500) + 500;
-
-                    span.style.animation = `glitch ${randomDuration}ms ease-in-out ${randomDelay}ms`;
-                });
-            });
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
