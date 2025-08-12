@@ -57,29 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
       randomText.style.animation = 'none';
     }, 200);
   }, 3000);
-
-  // Custom cursor
-  const cursor = document.createElement('div');
-  cursor.classList.add('custom-cursor');
-  document.body.appendChild(cursor);
-
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-
- 
-  document.body.style.cursor = 'none';
-  
-  document.querySelectorAll('a, button, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'scale(1.5)';
-      cursor.style.borderColor = 'var(--omori-red)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'scale(1)';
-      cursor.style.borderColor = 'var(--omori-white)';
-    });
   });
 
  
@@ -96,4 +73,5 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(element);
   });
 });
+
 
