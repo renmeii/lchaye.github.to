@@ -1,5 +1,28 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Typewriter effect for the main title
+  const body = document.body;
+  const toggleButton = document.createElement('button');
+  toggleButton.textContent = 'Toggle Background';
+  toggleButton.className = 'fixed top-4 right-4 p-2 bg-white text-black rounded-lg shadow-lg';
+  document.body.appendChild(toggleButton);
+
+  let isGalaxy = true;
+
+  toggleButton.addEventListener('click', () => {
+    if (isGalaxy) {
+      body.classList.remove('galaxy-background');
+      body.classList.add('room-background');
+    } else {
+      body.classList.remove('room-background');
+      body.classList.add('galaxy-background');
+    }
+    isGalaxy = !isGalaxy;
+  });
+
+
+  body.classList.add('galaxy-background');
+
+ 
   const title = document.querySelector('h1');
   const titleText = title.textContent;
   title.textContent = '';
@@ -15,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeWriter();
 
-  // Glitch effect on hover for navigation items
+  
   const navItems = document.querySelectorAll('nav a');
   navItems.forEach(item => {
     item.addEventListener('mouseover', () => {
@@ -26,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Random text glitch effect
+  
   const glitchTexts = document.querySelectorAll('.glitch-text');
   setInterval(() => {
     const randomText = glitchTexts[Math.floor(Math.random() * glitchTexts.length)];
@@ -35,20 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
       randomText.style.animation = 'none';
     }, 200);
   }, 3000);
-
-  // Create stars
-  const starsContainer = document.createElement('div');
-  starsContainer.className = 'stars-container';
-  document.body.appendChild(starsContainer);
-
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    starsContainer.appendChild(star);
-  }
 
   // Custom cursor
   const cursor = document.createElement('div');
@@ -60,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.style.top = e.clientY + 'px';
   });
 
-  // Remove cursor style changes on mousedown/mouseup
+ 
   document.addEventListener('mousedown', (e) => {
     e.preventDefault();
   });
@@ -69,74 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
   });
 
-  // Prevent default cursor on all elements
+  
   document.body.style.cursor = 'none';
   const allElements = document.getElementsByTagName('*');
   for (let i = 0; i < allElements.length; i++) {
     allElements[i].style.cursor = 'none';
   }
+
+ 
+  const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+      }
+    });
+  });
+
+  elementsToAnimate.forEach(element => {
+    observer.observe(element);
+  });
 });
 
-// Add these styles to your HTML file or a separate CSS file
-const styles = `
-  .stars-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    animation: twinkle linear infinite;
-  }
-
-  @keyframes twinkle {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
-  }
-
-  @keyframes glitch {
-    0% { transform: translate(2px, 2px); }
-    25% { transform: translate(-2px, -2px); }
-    50% { transform: translate(-2px, 2px); }
-    75% { transform: translate(2px, -2px); }
-    100% { transform: translate(2px, 2px); }
-  }
-
-  @keyframes textGlitch {
-    0% { opacity: 1; transform: translate(0); }
-    20% { opacity: 0.8; transform: translate(-2px, 2px); }
-    40% { opacity: 0.6; transform: translate(2px, -2px); }
-    60% { opacity: 0.8; transform: translate(-1px, 1px); }
-    80% { opacity: 0.9; transform: translate(1px, -1px); }
-    100% { opacity: 1; transform: translate(0); }
-  }
-
-  body {
-    cursor: none;
-  }
-
-  .custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid white;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-  }
-`;
-
-const styleElement = document.createElement('style');
-styleElement.textContent = styles;
-document.head.appendChild(styleElement);
