@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const toggleButton = document.createElement('button');
@@ -70,20 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
  
-  document.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-  });
-
-  document.addEventListener('mouseup', (e) => {
-    e.preventDefault();
-  });
-
-  
   document.body.style.cursor = 'none';
-  const allElements = document.getElementsByTagName('*');
-  for (let i = 0; i < allElements.length; i++) {
-    allElements[i].style.cursor = 'none';
-  }
+  
+  document.querySelectorAll('a, button, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'scale(1.5)';
+      cursor.style.borderColor = 'var(--omori-red)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'scale(1)';
+      cursor.style.borderColor = 'var(--omori-white)';
+    });
+  });
 
  
   const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
@@ -99,4 +96,3 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(element);
   });
 });
-
