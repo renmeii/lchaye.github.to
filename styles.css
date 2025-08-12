@@ -1,47 +1,32 @@
-.stars-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
+
+@keyframes galaxyMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  animation: twinkle linear infinite;
+.galaxy-background {
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+  background-size: 400% 400%;
+  animation: galaxyMove 15s ease infinite;
 }
 
-@keyframes twinkle {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+
+.room-background {
+  background-color: #f0f0f0;
+  background-image: linear-gradient(to bottom right, #e0e0e0, #ffffff);
 }
 
-@keyframes glitch {
-  0% { transform: translate(2px, 2px); }
-  25% { transform: translate(-2px, -2px); }
-  50% { transform: translate(-2px, 2px); }
-  75% { transform: translate(2px, -2px); }
-  100% { transform: translate(2px, 2px); }
-}
-
-@keyframes textGlitch {
-  0% { opacity: 1; transform: translate(0); }
-  20% { opacity: 0.8; transform: translate(-2px, 2px); }
-  40% { opacity: 0.6; transform: translate(2px, -2px); }
-  60% { opacity: 0.8; transform: translate(-1px, 1px); }
-  80% { opacity: 0.9; transform: translate(1px, -1px); }
-  100% { opacity: 1; transform: translate(0); }
-}
 
 body {
   cursor: none;
+  transition: background 0.5s ease;
 }
 
 .custom-cursor {
@@ -63,4 +48,26 @@ body {
 .animate {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+.glitch {
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, -2px); }
+  50% { transform: translate(-2px, 2px); }
+  75% { transform: translate(2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
+
+@keyframes textGlitch {
+  0% { opacity: 1; transform: translate(0); }
+  20% { opacity: 0.8; transform: translate(-2px, 2px); }
+  40% { opacity: 0.6; transform: translate(2px, -2px); }
+  60% { opacity: 0.8; transform: translate(-1px, 1px); }
+  80% { opacity: 0.9; transform: translate(1px, -1px); }
+  100% { opacity: 1; transform: translate(0); }
 }
