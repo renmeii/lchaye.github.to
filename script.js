@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('animate');
       }
     });
-  });
 
   elementsToAnimate.forEach(element => {
     observer.observe(element);
   });
 });
+
 
 
