@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(element);
   });
 });
+
