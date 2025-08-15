@@ -1,4 +1,4 @@
-/* Omori color palette */
+
 :root {
   --omori-black: #081820;
   --omori-white: #D0F4F8;
@@ -28,7 +28,7 @@ body {
   transition: background 0.5s ease;
 }
 
-/* Omori-style cursor */
+
 .custom-cursor {
   width: 24px;
   height: 24px;
@@ -51,7 +51,7 @@ body {
   transform: translateY(0);
 }
 
-/* Enhanced Omori glitch effects */
+
 .glitch {
   position: relative;
   animation: glitch 1s infinite;
@@ -104,7 +104,7 @@ body {
   100% { opacity: 1; transform: translate(0); }
 }
 
-/* Hand-drawn borders */
+
 .hand-drawn {
   border: 3px solid var(--omori-black);
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
