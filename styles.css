@@ -1,9 +1,9 @@
 /* Omori color palette */
 :root {
-  --omori-black: #000000;
-  --omori-white: #ffffff;
-  --omori-red: #ff0000;
-  --omori-dark-red: #cc0000;
+  --omori-black: #081820;
+  --omori-white: #D0F4F8;
+  --omori-red: #AB2E56;
+  --omori-dark-red: #3C3468;
 }
 
 @keyframes galaxyMove {
