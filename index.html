@@ -6,7 +6,7 @@
   <title>WhiteSpace</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <script>
     tailwind.config = {
       theme: {
@@ -20,32 +20,72 @@
   </script>
 </head>
 <body class="bg-black text-white font-courier">
-  <div class="min-h-screen flex flex-col galaxy-background">
-    <header class="py-4 bg-black shadow-lg hand-drawn">
+  <div class="min-h-screen flex flex-col">
+    <header class="py-4 bg-black shadow-lg">
       <nav class="container mx-auto px-4">
         <ul class="flex justify-center space-x-8 text-sm">
-          <li><a href="index.html" class="hover:text-red-500 transition duration-300">HOME</a></li>
-          <li><a href="about.html" class="hover:text-red-500 transition duration-300">ABOUT</a></li>
-          <li><a href="contact.html" class="hover:text-red-500 transition duration-300">CONTACT</a></li>
-          <li><a href="music.html" class="hover:text-red-500 transition duration-300">MUSIC</a></li>
+          <li><a href="#home" class="hover:text-red-500 transition duration-300">HOME</a></li>
+          <li><a href="#about" class="hover:text-red-500 transition duration-300">ABOUT</a></li>
+          <li><a href="#contact" class="hover:text-red-500 transition duration-300">CONTACT</a></li>
+          <li><a href="#music" class="hover:text-red-500 transition duration-300">MUSIC</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-16 flex items-center justify-center">
-      <section class="text-center animate-on-scroll hand-drawn p-8 bg-black bg-opacity-80">
+    <main class="flex-grow container mx-auto px-4 py-16">
+      <section id="home" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
         <h1 class="text-6xl font-bold mb-6 glitch" data-text="WhiteSpace">WhiteSpace</h1>
-        <p class="text-xl mb-8 glitch-text">Welcome to the void</p>
+        <p class="text-xl mb-8">Welcome to the void</p>
         <div class="space-y-4">
-          <p class="text-sm glitch-text">Explore the emptiness</p>
-          <p class="text-sm glitch-text">Embrace the silence</p>
-          <p class="text-sm text-red-500">Face your fears</p>
+          <p class="text-sm">Explore the emptiness</p>
+          <p class="text-sm">Embrace the silence</p>
+          <p class="text-sm">Face your fears</p>
+        </div>
+      </section>
+
+      <section id="about" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold mb-6 glitch" data-text="About">About</h1>
+        <p class="text-xl mb-8">Discover the essence of WhiteSpace</p>
+        <div class="space-y-4">
+          <p class="text-sm">A journey through the void</p>
+          <p class="text-sm">Where silence speaks volumes</p>
+          <p class="text-sm">And emptiness tells a story</p>
+        </div>
+      </section>
+
+      <section id="contact" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold mb-6 glitch" data-text="Contact">Contact</h1>
+        <p class="text-xl mb-8">Reach out into the void</p>
+        <form id="contact-form" class="space-y-4 max-w-md mx-auto">
+          <input type="text" name="name" placeholder="Your name" class="w-full p-2 bg-transparent border rounded-lg focus:outline-none focus:border-white" required>
+          <input type="email" name="email" placeholder="Your email" class="w-full p-2 bg-transparent border rounded-lg focus:outline-none focus:border-white" required>
+          <textarea name="message" placeholder="Your message" class="w-full p-2 bg-transparent border h-32 rounded-lg focus:outline-none focus:border-white" required></textarea>
+          <button type="submit" class="w-full p-2 bg-transparent border text-white hover:bg-white hover:text-black transition duration-300 rounded-lg">Send</button>
+        </form>
+      </section>
+
+      <section id="music" class="min-h-screen flex flex-col items-center justify-center">
+        <div class="text-center mb-12 animate-on-scroll">
+            <h1 class="text-4xl font-bold mb-6 glitch" data-text="Music">Music</h1>
+            <p class="text-xl mb-8">Explore the soundscapes of WhiteSpace</p>
+        </div>
+
+        <div class="w-full max-w-3xl animate-on-scroll">
+            <div class="aspect-w-16 aspect-h-9">
+                <iframe width="800" height="500" src="https://www.youtube.com/embed/cAH9d9ibM1w?si=qAwyLlaGcQWZTSNs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center animate-on-scroll">
+            <h2 class="text-2xl font-bold mb-4 glitch" data-text="About My Music">About My Music</h2>
+            <p class="mb-4">Dive into the ethereal sounds that define the WhiteSpace.</p>
+            <p>a noise you can never get rid of...</p>
         </div>
       </section>
     </main>
 
-    <footer class="py-4 bg-black shadow-inner hand-drawn">
-      <p class="text-center text-xs text-red-500">&copy;  WhiteSpace | Enter at your own risk</p>
+    <footer>
+      <p class="text-center text-xs">&copy;  WhiteSpace | Enter at your own risk</p>
     </footer>
   </div>
 
