@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WhiteSpace</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            'courier': ['"Courier Prime"', 'monospace'],
+            'vt323': ['"VT323"', 'monospace'],
           },
         }
       }
     }
   </script>
 </head>
-<body class="bg-black text-white font-courier">
+<body class="bg-black text-white font-vt323">
+  <div class="collage-element square" style="top: 10%; left: 10%;"></div>
+  <div class="collage-element triangle" style="top: 20%; right: 15%;"></div>
+  <div class="collage-element square" style="bottom: 30%; right: 10%;"></div>
+  <div class="collage-element triangle" style="bottom: 10%; left: 15%;"></div>
   <div class="min-h-screen flex flex-col">
     <header class="py-4 bg-black shadow-lg">
       <nav class="container mx-auto px-4">
@@ -34,28 +38,40 @@
 
     <main class="flex-grow container mx-auto px-4 py-16">
       <section id="home" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
-        <h1 class="text-6xl font-bold mb-6 glitch" data-text="WhiteSpace">WhiteSpace</h1>
-        <p class="text-xl mb-8">Welcome to the void</p>
+        <h1 class="text-6xl font-bold mb-6 glitch" data-text="WhiteSpace">
+          <span aria-hidden="true">WhiteSpace</span>
+          WhiteSpace
+          <span aria-hidden="true">WhiteSpace</span>
+        </h1>
+        <p class="text-xl mb-8 crt-text">Welcome to the void</p>
         <div class="space-y-4">
-          <p class="text-sm">Explore the emptiness</p>
-          <p class="text-sm">Embrace the silence</p>
-          <p class="text-sm">Face your fears</p>
+          <p class="text-sm crt-text">Explore the emptiness</p>
+          <p class="text-sm crt-text">Embrace the silence</p>
+          <p class="text-sm crt-text">Face your fears</p>
         </div>
       </section>
 
       <section id="about" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold mb-6 glitch" data-text="About">About</h1>
-        <p class="text-xl mb-8">Discover the essence of WhiteSpace</p>
+        <h1 class="text-4xl font-bold mb-6 glitch" data-text="About">
+          <span aria-hidden="true">About</span>
+          About
+          <span aria-hidden="true">About</span>
+        </h1>
+        <p class="text-xl mb-8 crt-text">Discover the essence of WhiteSpace</p>
         <div class="space-y-4">
-          <p class="text-sm">A journey through the void</p>
-          <p class="text-sm">Where silence speaks volumes</p>
-          <p class="text-sm">And emptiness tells a story</p>
+          <p class="text-sm crt-text">A journey through the void</p>
+          <p class="text-sm crt-text">Where silence speaks volumes</p>
+          <p class="text-sm crt-text">And emptiness tells a story</p>
         </div>
       </section>
 
       <section id="contact" class="text-center animate-on-scroll min-h-screen flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold mb-6 glitch" data-text="Contact">Contact</h1>
-        <p class="text-xl mb-8">Reach out into the void</p>
+        <h1 class="text-4xl font-bold mb-6 glitch" data-text="Contact">
+          <span aria-hidden="true">Contact</span>
+          Contact
+          <span aria-hidden="true">Contact</span>
+        </h1>
+        <p class="text-xl mb-8 crt-text">Reach out into the void</p>
         <form id="contact-form" class="space-y-4 max-w-md mx-auto">
           <input type="text" name="name" placeholder="Your name" class="w-full p-2 bg-transparent border rounded-lg focus:outline-none focus:border-white" required>
           <input type="email" name="email" placeholder="Your email" class="w-full p-2 bg-transparent border rounded-lg focus:outline-none focus:border-white" required>
@@ -66,8 +82,12 @@
 
       <section id="music" class="min-h-screen flex flex-col items-center justify-center">
         <div class="text-center mb-12 animate-on-scroll">
-            <h1 class="text-4xl font-bold mb-6 glitch" data-text="Music">Music</h1>
-            <p class="text-xl mb-8">Explore the soundscapes of WhiteSpace</p>
+            <h1 class="text-4xl font-bold mb-6 glitch" data-text="Music">
+              <span aria-hidden="true">Music</span>
+              Music
+              <span aria-hidden="true">Music</span>
+            </h1>
+            <p class="text-xl mb-8 crt-text">Explore the soundscapes of WhiteSpace</p>
         </div>
 
         <div class="w-full max-w-3xl animate-on-scroll">
@@ -77,9 +97,13 @@
         </div>
 
         <div class="mt-12 text-center animate-on-scroll">
-            <h2 class="text-2xl font-bold mb-4 glitch" data-text="About My Music">About My Music</h2>
-            <p class="mb-4">Dive into the ethereal sounds that define the WhiteSpace.</p>
-            <p>a noise you can never get rid of...</p>
+            <h2 class="text-2xl font-bold mb-4 glitch" data-text="About My Music">
+              <span aria-hidden="true">About My Music</span>
+              About My Music
+              <span aria-hidden="true">About My Music</span>
+            </h2>
+            <p class="mb-4 crt-text">Dive into the ethereal sounds that define the WhiteSpace.</p>
+            <p class="crt-text">a noise you can never get rid of...</p>
         </div>
       </section>
     </main>

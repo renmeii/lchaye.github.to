@@ -1,14 +1,15 @@
 :root {
-  --background-color: #1a1a1a;
-  --text-color: #00ff41;
-  --header-color: #333;
-  --border-color: #00ff41;
+  --background-color: #0d0d0d;
+  --primary-text-color: #ff00ff;
+  --secondary-text-color: #00ffff;
+  --accent-color: #39ff14;
+  --border-color: var(--accent-color);
 }
 
 body {
   background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Courier Prime', monospace;
+  color: var(--primary-text-color);
+  font-family: 'VT323', monospace;
   cursor: auto;
 }
 
@@ -48,41 +49,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: var(--text-color);
+  color: var(--primary-text-color);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 a:hover {
-  color: white;
+  color: var(--secondary-text-color);
 }
 
 .glitch {
   position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em 0 0 rgba(0, 255, 0, 0.75), 0 0.05em 0 rgba(0, 0, 255, 0.75);
   animation: glitch-animation 1s infinite;
 }
 
-.glitch::before, .glitch::after {
-  content: attr(data-text);
+.glitch span {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--background-color);
-  overflow: hidden;
 }
 
-.glitch::before {
-  left: 2px;
-  text-shadow: -2px 0 red;
-  animation: glitch-animation-2 1.5s infinite linear alternate-reverse;
+.glitch span:first-child {
+  animation: glitch-animation 650ms infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-0.025em, -0.0125em);
+  opacity: 0.8;
 }
 
-.glitch::after {
-  left: -2px;
-  text-shadow: -2px 0 blue;
-  animation: glitch-animation-2 2s infinite linear alternate-reverse;
+.glitch span:last-child {
+  animation: glitch-animation 375ms infinite;
+  clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+  transform: translate(0.0125em, 0.025em);
+  opacity: 0.8;
+}
+
+.crt-text {
+  animation: crt-animation 0.1s infinite;
+}
+
+@keyframes crt-animation {
+  0% {
+    text-shadow: 0.01em 0.01em 0.01em rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: -0.01em -0.01em 0.01em rgba(255, 255, 255, 0.3);
+  }
 }
 
 @keyframes glitch-animation {
@@ -116,4 +128,65 @@ a:hover {
     90% { clip: rect(26px, 9999px, 16px, 0); }
     95% { clip: rect(5px, 9999px, 43px, 0); }
     100% { clip: rect(4px, 9999px, 33px, 0); }
+}
+
+body::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.collage-element {
+    position: absolute;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.collage-element.square {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-color);
+}
+
+.collage-element.triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid var(--secondary-text-color);
 }
